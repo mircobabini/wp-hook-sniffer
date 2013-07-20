@@ -1,0 +1,79 @@
+/**** WordPress Hook Sniffer CSS Selectors ****/
+/* @version 1.0 */
+
+.wrap #hook-sniff {
+	margin: 10px 0px 0px 10px;
+}			
+
+#hook-sniff .wp_hook_sniff_sidebar {
+	width: 275px;
+	float: left;
+	padding: 15px 15px 40px 10px;
+	margin: 0px 20px 0px 0px;
+	border-right: 2px solid #cccccc;
+}
+
+#hook-sniff .wp_hook_sniff_settings {
+	float: left;
+	width: 625px;
+	margin: 0px 15px 0px 0px;
+}
+
+.wp_hook_sniff_settings #hook-sniff-api-nag {
+	font-weight: bold; 
+	text-align: center;
+	background-color: #fffeeb;
+	color: #FF8000;
+	margin: 10px;
+	padding: 10px;
+}
+
+#hook_sniff_warning {
+	font-weight: bold; 
+	text-align: center;
+	background-color: #fffeeb;
+	color: #CC0000;
+	margin: 10px;
+	padding: 10px;
+}
+
+.wp_hook_sniff_settings input {
+	font-weight: bold; 
+}
+
+#hook-sniff h3 {
+	color: black;
+	background-color: #cccccc;
+	padding: 1px 0px 8px 5px;
+}
+
+/* Currently not used */
+#hook-sniff .enable {
+	/*padding: 0px 10px 0px 10px;*/
+}
+
+.wp_hook_sniff_sidebar .wp_hook_sniff_section {
+	font-size: 1.1em; /* 1.1px; */
+	font-weight: bold; 
+	color: black;
+	background-color: #cccccc;
+	margin: 0px 0px 10px 0px;
+	padding: 10px 0px 10px 10px;
+}
+
+.wp_hook_sniff_paypal_button {
+	text-align: center;
+	margin: 10px 0px 20px 0px;
+	padding: 5px 10px 5px 10px;
+	border: 1px solid gray;
+}
+	
+.wp_hook_sniff_paypal_button table {
+	margin: 10px 0px 15px 30px;
+}
+
+.wp_hook_sniff_sidebar .copy {
+	text-align: center;
+	font-size: .85em;
+	margin: 10px 0px 0px 0px;
+}

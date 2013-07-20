@@ -1,0 +1,156 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WordPress Hook Sniffer v0.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-07-27 22:11-0500\n"
+"PO-Revision-Date: 2010-07-27 22:11-0500\n"
+"Last-Translator: Jeff Sayre\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;gettext;gettext_noop;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: wp-hook-sniff-admin.php:13
+#: wp-hook-sniff-admin.php:122
+msgid "WordPress Hook Sniffer Settings"
+msgstr ""
+
+#: wp-hook-sniff-admin.php:32
+msgid "Main Sniffer Settings"
+msgstr ""
+
+#: wp-hook-sniff-admin.php:33
+msgid "Output Options"
+msgstr ""
+
+#: wp-hook-sniff-admin.php:34
+msgid "Output Location"
+msgstr ""
+
+#: wp-hook-sniff-admin.php:38
+msgid "Enable or Disable WordPress Hook Sniffer:"
+msgstr ""
+
+#: wp-hook-sniff-admin.php:42
+#: wp-hook-sniff-core.php:219
+#: wp-hook-sniff-core.php:221
+msgid "Added Functions:"
+msgstr ""
+
+#: wp-hook-sniff-admin.php:44
+#: wp-hook-sniff-core.php:310
+#: wp-hook-sniff-core.php:312
+msgid "Removed Functions:"
+msgstr ""
+
+#: wp-hook-sniff-admin.php:45
+#: wp-hook-sniff-core.php:369
+#: wp-hook-sniff-core.php:376
+msgid "Action and Filter Function Array:"
+msgstr ""
+
+#: wp-hook-sniff-admin.php:46
+#: wp-hook-sniff-core.php:406
+#: wp-hook-sniff-core.php:413
+msgid "Action Event Firing Order:"
+msgstr ""
+
+#: wp-hook-sniff-admin.php:47
+#: wp-hook-sniff-core.php:450
+#: wp-hook-sniff-core.php:452
+msgid "Action Event Firing Sequence:"
+msgstr ""
+
+#: wp-hook-sniff-admin.php:48
+#: wp-hook-sniff-core.php:492
+#: wp-hook-sniff-core.php:494
+msgid "Filter Event Firing Sequence:"
+msgstr ""
+
+#: wp-hook-sniff-admin.php:52
+msgid "Preferred Output Location:"
+msgstr ""
+
+#: wp-hook-sniff-admin.php:78
+msgid "Please Support My Work"
+msgstr ""
+
+#: wp-hook-sniff-admin.php:98
+msgid "If you are a corporate user, consultant, plugin developer, or theme designer and profit from using my plugin, please consider donating at one of the upper levels. Thank you!"
+msgstr ""
+
+#: wp-hook-sniff-admin.php:102
+msgid "WP Hook Sniffer Resources"
+msgstr ""
+
+#: wp-hook-sniff-admin.php:110
+msgid "You Should Follow Me"
+msgstr ""
+
+#: wp-hook-sniff-admin.php:116
+msgid "Plugin Version"
+msgstr ""
+
+#: wp-hook-sniff-admin.php:116
+msgid "Plugin Licensed Under"
+msgstr ""
+
+#: wp-hook-sniff-admin.php:126
+#: wp-hook-sniff-core.php:76
+#, php-format
+msgid "WARNING: Version %01.2f of WordPress Hook Sniffer requires WordPress version %01.2f or newer. You must upgrade WordPress to use this plugin. Please deactivate plugin."
+msgstr ""
+
+#: wp-hook-sniff-admin.php:132
+msgid "Warning! You have not installed the Modified WordPress Plugin API file. WordPress Hook Sniffer will not work without this. Please see the readme file for more information."
+msgstr ""
+
+#: wp-hook-sniff-admin.php:137
+msgid "Notice! There is an update to the modified plugin.php file. You are running an older version. Please replace the version of plugin.php that you have in /wp-includes with the newer version located in WP Hook Sniffer&#039;s /accessory_files/modified."
+msgstr ""
+
+#: wp-hook-sniff-admin.php:142
+msgid "The WordPress Hook Sniffer plugin is a tool for plugin developers that helps determine the sequence in which action and filter functions are fired. You can configure what is outputted and to where the output is sent. Please note, this plugin is to be used only in a development sandbox and not in a production environment."
+msgstr ""
+
+#: wp-hook-sniff-admin.php:152
+msgid "You have not selected any output options. WordPress Hook Sniffer cannot be awesome without your help! Please set to disabled or choose some output options."
+msgstr ""
+
+#: wp-hook-sniff-admin.php:211
+msgid "WordPress Hook Sniffer is disabled by default. Enable it here, and then choose your preferred settings below."
+msgstr ""
+
+#: wp-hook-sniff-admin.php:227
+msgid "Enabled"
+msgstr ""
+
+#: wp-hook-sniff-admin.php:228
+msgid "Disabled"
+msgstr ""
+
+#: wp-hook-sniff-admin.php:246
+msgid "Choose which arrays you wish to output. Each provides a unique insight into the underlying working of WordPress&#039; hooks. To learn more about how to interpret the output, see the WP Hook Sniffer Resources section to the left."
+msgstr ""
+
+#: wp-hook-sniff-admin.php:377
+msgid "You can choose to either output the results directly to screen, or to a text file. Screen results will appear after the theme&#039;s footer. The text file \"wp-hook-sniff.txt\" can be found in the \"hook-sniff-report\" folder of the wordpress-hook-sniffer directory."
+msgstr ""
+
+#: wp-hook-sniff-admin.php:393
+msgid "To Screen"
+msgstr ""
+
+#: wp-hook-sniff-admin.php:394
+msgid "To File"
+msgstr ""
+
+#: wp-hook-sniff-core.php:307
+msgid "If 'Time Removed' is zero, this means that the function to decouple from the given hook did not yet exist in the wp_filter array at the time the remove_filter or remove_action call was triggered. Therefore, there is nothing to remove at this time. The results may vary depending on from which url of the application you are reading the Hook Sniffer output."
+msgstr ""
+

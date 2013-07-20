@@ -1,0 +1,17 @@
+=== WordPress Hook Sniffer plugin Known Bugs===
+Version: 0.11
+As of: 28-7-2010
+
+This is the place where I can keep a listing of all known bugs with the WordPress Hook Sniffer plugin. Feel free to contact me with your bug reports and also to offer patches!
+
+== Major ==
+
+* None
+
+== Minor ==
+
+* When viewing output to screen in the Admin dashboard (admin homepage), the WP Hook Sniffer output not only appears after the theme's footer, which is where it should, but also in most of the sub dashboard windows--"Incoming Links", "Plugins", "QuickPress", "WordPress Development Blog", and "Other WordPress News" sections. These are widgets, each acting like mini theme windows with their own footer, causing the output to be placed at the end of each of those five widgets. However, these widgets do not actually have a footer section nor are they hooked to the same action hook that WP Hook Sniffer is hooked to initiate hook sniffer output. I'm still investigating this odd behavior, but since it is a minor issue, I am not worrying about it.
+
+== Actions ==
+
+None will be taken at this time to address the minor bugs. They do not affect performance.
