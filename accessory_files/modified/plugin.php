@@ -328,7 +328,13 @@ function apply_filters($tag, $value) {
 				$filter_incrementor++;
 			}
 			
-			$wp_hook_sniff_filter_firing_sequence[] = "Firing Sequence $filter_incrementor: $tag --> " . $the_['function'] . " --> Time fired: " . microtime( true );
+			if (gettype ($the_['function']) == 'object' && get_class ($the_['function']) == 'Closure') {
+				$fname = '[Closure]';
+			} else {
+				$fname = $the_['function'];
+			}
+
+			$wp_hook_sniff_filter_firing_sequence[] = "Firing Sequence $filter_incrementor: $tag --> " . $fname . " --> Time fired: " . microtime( true );
 			$filter_incrementor++;
 			// Above Section Added for WP Hook Sniffer
 			
@@ -402,7 +408,13 @@ function apply_filters_ref_array($tag, $args) {
 				$filter_incrementor++;
 			}
 			
-			$wp_hook_sniff_filter_firing_sequence[] = "Firing Sequence $filter_incrementor: $tag --> " . $the_['function'] . " --> Time fired: " . microtime( true );
+			if (gettype ($the_['function']) == 'object' && get_class ($the_['function']) == 'Closure') {
+				$fname = '[Closure]';
+			} else {
+				$fname = $the_['function'];
+			}
+
+			$wp_hook_sniff_filter_firing_sequence[] = "Firing Sequence $filter_incrementor: $tag --> " . $fname . " --> Time fired: " . microtime( true );
 			$filter_incrementor++;
 			// Above Section Added for WP Hook Sniffer
 			
@@ -619,7 +631,13 @@ function do_action($tag, $arg = '') {
 					$action_incrementor++;
 			}
 			
-			$wp_hook_sniff_action_firing_sequence[] = "Firing Sequence $action_incrementor: $tag --> " . $the_['function'] . " --> Time fired: " . microtime( true );
+			if (gettype ($the_['function']) == 'object' && get_class ($the_['function']) == 'Closure') {
+				$fname = '[Closure]';
+			} else {
+				$fname = $the_['function'];
+			}
+
+			$wp_hook_sniff_action_firing_sequence[] = "Firing Sequence $action_incrementor: $tag --> " . $fname . " --> Time fired: " . microtime( true );
 			$action_incrementor++;
 			// Above Section Added for WP Hook Sniffer
 			
@@ -716,7 +734,13 @@ function do_action_ref_array($tag, $args) {
 					$action_incrementor++;
 			}
 			
-			$wp_hook_sniff_action_firing_sequence[] = "Firing Sequence $action_incrementor: $tag --> " . $the_['function'] . " --> Time fired: " . microtime( true );
+			if (gettype ($the_['function']) == 'object' && get_class ($the_['function']) == 'Closure') {
+				$fname = '[Closure]';
+			} else {
+				$fname = $the_['function'];
+			}
+
+			$wp_hook_sniff_action_firing_sequence[] = "Firing Sequence $action_incrementor: $tag --> " . $fname . " --> Time fired: " . microtime( true );
 			$action_incrementor++;
 			// Above Section Added for WP Hook Sniffer
 			

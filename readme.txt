@@ -1,10 +1,10 @@
 === Plugin Name ===
-Contributors: jeffsayre
+Contributors: jeffsayre, mirkolofio
 Donate link: http://jeffsayre.com/2010/04/29/introducing-wordpress-hook-sniffer-a-developer-plugin/
 Tags: wordpress, wordpress mu, buddypress, developer plugin, action hooks, filter hooks
 Requires at least: WP 3.0
-Tested up to: WP 3.0.4
-Stable tag: 0.15
+Tested up to: WP 3.5.2
+Stable tag: 0.16
 
 The WordPress Hook Sniffer plugin is a tool for plugin developers that helps determine the sequence in which action and filter functions are fired.
 
@@ -88,6 +88,10 @@ You are welcome to report issues or provide suggestions by adding a comment to [
 * known-bugs.txt - contains a listing of all currently-known bugs
 
 == Changelog ==
+
+= 0.16 =
+* July,21 2013
+* Fixes an issue in the modified plugin.php file where if the $the_['function'] variable is a Closure, a fatal error occurs.
 
 = 0.15 =
 * December,31 2010
