@@ -1,9 +1,9 @@
 === Plugin Name ===
-Contributors: jeffsayre, mirkolofio
-Donate link: http://jeffsayre.com/2010/04/29/introducing-wordpress-hook-sniffer-a-developer-plugin/
+Contributors: mirkolofio <mirkolofio@gmail.com>, jeffsayre
+Donate link: http://www.mircobabini.com/wordpress/hook-sniffer-wordpress-plugin/
 Tags: wordpress, wordpress mu, buddypress, developer plugin, action hooks, filter hooks
 Requires at least: WP 3.0
-Tested up to: WP 3.5.2
+Tested up to: WP 3.7.1
 Stable tag: 0.16
 
 The WordPress Hook Sniffer plugin is a tool for plugin developers that helps determine the sequence in which action and filter functions are fired.
@@ -11,6 +11,8 @@ The WordPress Hook Sniffer plugin is a tool for plugin developers that helps det
 == Description ==
 
 The WordPress Hook Sniffer plugin is a tool for plugin developers that helps determine the sequence in which action and filter functions are fired. It allows you to peer into the inner workings of the WordPress Plugin API. You can configure what is outputted and to where the output is sent (screen or text file).
+
+Since it's not supported anymore from the original author, it's now mantained by [Mirco Babini](http://www.mircobabini.com/), **Wordpress Consultant, Web Developer and Data Lover**.
 
 <h4>Output Options</h4>
 You can choose to output any or all of the six different sets of hook data that WordPress Hook Sniffer collects. Each dataset provides a unique insight into the underlying working of WordPress' hooks. The currently available datasets are:
