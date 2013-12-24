@@ -12,7 +12,7 @@ The WordPress Hook Sniffer plugin is a tool for plugin developers that helps det
 
 The WordPress Hook Sniffer plugin is a tool for plugin developers that helps determine the sequence in which action and filter functions are fired. It allows you to peer into the inner workings of the WordPress Plugin API. You can configure what is outputted and to where the output is sent (screen or text file).
 
-Since it's not supported anymore from the original author, it's now mantained by [Mirco Babini](http://www.mircobabini.com/), **Wordpress Consultant, Web Developer and Data Lover**.
+Since it's not supported anymore from the original author, it's now maintained by [Mirco Babini](http://www.mircobabini.com/), **Wordpress Consultant, Web Developer and Data Lover**.
 
 <h4>Output Options</h4>
 You can choose to output any or all of the six different sets of hook data that WordPress Hook Sniffer collects. Each dataset provides a unique insight into the underlying working of WordPress' hooks. The currently available datasets are:
