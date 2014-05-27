@@ -1,18 +1,16 @@
 <?php
 /*
-Plugin Name: WordPress Hook Sniffer
-Plugin URI: http://jeffsayre.com/2010/04/29/introducing-wordpress-hook-sniffer-a-developer-plugin/
+Plugin Name: Hook Sniffer
+Plugin URI: http://www.mircobabini.com/wordpress/hook-sniffer-wordpress-plugin/
 Description: This is a developer's tool that sniffs out the firing sequence of WordPress action and filter hooks. DO NOT USE in a production environment.
-Version: 0.16
-Revision Date: July,21 2013
+Version: 0.17
 Requires at least: WP 3.0
-Tested up to: WP 3.5.2
+Tested up to: WP 3.7.1
 License: GNU General Public License 3.0 (GPL) http://www.gnu.org/licenses/gpl.html
 Author: Jeff Sayre, Mirco Babini <mirkolofio@gmail.com>
 Author URI: http://jeffsayre.com/, http://mircobabini.com/
-Site Wide Only: true
 
-Copyright 2010 Jeff Sayre
+Copyright 2010 Jeff Sayre, Mirco Babini
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -49,7 +47,7 @@ function wp_hook_sniff_init() {
 	}
 	
 	/* Define the component's current version */
-	define( 'WP_HOOK_PLUGIN_VERSION', 0.16 );
+	define( 'WP_HOOK_PLUGIN_VERSION', 0.17 );
 	
 	/* Define the current version of the modified plugin.php file */
 	define( 'WP_HOOK_SNIFF_PLUGIN_API_VER_CURRENT', 1.2 );
@@ -58,10 +56,10 @@ function wp_hook_sniff_init() {
 	define( 'WP_HOOK_SNIFF_MIN_WP_VER', 3.0 );
 		
 	/* Define the component's parent folder name */
-	define( 'WP_HOOK_PLUGIN_NAME', 'wordpress-hook-sniffer' );
+	define( 'WP_HOOK_PLUGIN_NAME', basename( dirname( __FILE__ ) ) );
 	
 	/* Define the component's loader file -- this file */
-	define( 'WP_HOOK_PLUGIN_LOADER', 'wp-hook-sniffer.php' );
+	define( 'WP_HOOK_PLUGIN_LOADER', basename( __FILE__ ) );
 	
 	/* Define component's directory and URL Paths */
 	define( 'WP_HOOK_PLUGIN_DIR', WP_PLUGIN_DIR . '/' . WP_HOOK_PLUGIN_NAME );
@@ -77,6 +75,9 @@ function wp_hook_sniff_init() {
 	 * manner -- only when it is installed and activated.
 	 */
 	do_action( 'wp_hook_sniff_init_event' );
+
+	register_activation_hook( WP_HOOK_PLUGIN_NAME . '/' . WP_HOOK_PLUGIN_LOADER, 'wp_hook_sniff_plugin_activated' );
+	register_deactivation_hook( WP_HOOK_PLUGIN_NAME . '/' . WP_HOOK_PLUGIN_LOADER, 'wp_hook_sniff_plugin_deactivated' );
 }
 add_action( 'plugins_loaded', 'wp_hook_sniff_init', 0 );
 
@@ -92,7 +93,6 @@ add_action( 'plugins_loaded', 'wp_hook_sniff_init', 0 );
 function wp_hook_sniff_plugin_activated() {
 	do_action( 'wp_hook_sniff_loader_activate' );
 }
-register_activation_hook( 'wordpress-hook-sniffer/wp-hook-sniffer.php', 'wp_hook_sniff_plugin_activated' );
 
 
 /**
@@ -118,6 +118,5 @@ function wp_hook_sniff_plugin_deactivated() {
 
 	do_action( 'wp_hook_sniff_loader_deactivate' );
 }
-register_deactivation_hook( 'wordpress-hook-sniffer/wp-hook-sniffer.php', 'wp_hook_sniff_plugin_deactivated' );
 
 ?>
