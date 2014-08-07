@@ -1,0 +1,318 @@
+1a2,137
+> /********************************************************************************
+>  * 						Modified WordPress Plugin API
+>  *
+>  * To be used with the WP Hook Sniffer Plugin in a development environment only
+>  *******************************************************************************/
+> 
+> /**  
+>  * THIS IS A MODIFIED VERSION OF THE WP PLUGIN API FILE
+>  * TO BE USED ONLY IN A DEVELOPMENT SANDBOX AS PART OF
+>  * THE WORDPRESS HOOK SNIFFER PLUGIN. DO NOT USE THIS
+>  * FILE IN A PRODUCTION ENVIRONMENT.
+>  *
+>  * THIS FILE AND THE PLUGIN WITH WHICH IT IS DISTRIBUTED
+>  * ARE TO BE USED SOLELY BY PLUGIN DEVELOPERS. USE AT YOUR
+>  * OWN RISK.
+>  *
+>  * This modified file is distributed in the hope that it will be useful,
+>  * but WITHOUT ANY WARRANTY; without even the implied warranty of 
+>  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+>  * 
+>  * @package WordPress Hook Sniffer Plugin
+>  */
+> 
+> /**
+>  * wp_hook_sniff_plugin_api()
+>  *
+>  * Used to verify this file, the Modified WordPress Plugin API, is installed.
+>  * Also, defines the version on this file to make sure that people are using
+>  * The most recent, and proper, version of the modified plugin.php
+>  *
+>  * @since 0.1
+>  * @version 1.2 / updated WP_HOOK_SNIFF_PLUGIN_API_VER constant
+>  */
+> function wp_hook_sniff_plugin_api() {
+> 	define( 'WP_HOOK_SNIFF_API', True );
+> 	define( 'WP_HOOK_SNIFF_PLUGIN_API_VER', 1.2 );
+> 	
+> 	// initialize $time_fired variable for good measure
+> 	$time_fired = 0;
+> }
+> add_action( 'plugins_loaded', 'wp_hook_sniff_plugin_api', 0 );
+> 
+> /**
+>  * action_filter_backtrace()
+>  *
+>  * This function is NOT part of the standard WP Plugin API
+>  * It is added exclusively for use with the WP Hook Sniffer
+>  * Plugin
+>  * 
+>  * Capture the sequence in which an action function or
+>  * filter function was added to or removed from the
+>  * $wp_filter array. Also, determine the file from which
+>  * the add_action / remove_action, or add_filter / remove_filter
+>  * call originated.
+>  *
+>  * @since 0.1
+>  * @version 1.0
+>  */
+> function action_filter_backtrace( $time_fired, $backtrace, $functions_count, $sending_func ) {
+> 	global $wp_hook_sniff_functions_added_array, $wp_hook_sniff_functions_removed_array;
+> 	
+> 	/* The "add_action" and "remove_action" string literals are array values
+> 	 * stored by the backtrace(). They reference the calling function's name.
+> 	 * By looking at the subarray element "function" within the second array
+> 	 * element of the $backtrace array, we can determine whether the calling
+> 	 * function was related to adding or removing an action function. The other
+> 	 * option, then, is that it was related to adding or removing a filter
+> 	 * function. Finally, by looking at the contents of the passed $sending_func
+> 	 * variable, we can definitively tell if it was an add or remove request.
+> 	 */
+> 	 
+> 	$requested_operation = $backtrace[1]["function"];
+> 	
+> 	if( ( $requested_operation == "add_action" ) || ( $requested_operation == "remove_action" ) ) {
+> 		// This relates to an action function; process the contents of the second array element
+> 		
+> 		if( !empty( $backtrace[1]["args"][2] ) ) {
+> 			$calling_priority_set = $backtrace[1]["args"][2];
+> 		} else {
+> 			$calling_priority_set = "";
+> 		}
+> 		
+> 		if( !empty( $backtrace[1]["args"][3] ) ) {
+> 			$calling_args_set = $backtrace[1]["args"][3];
+> 		} else {
+> 			$calling_args_set = "";
+> 		}
+> 		
+> 		// Capture the action function sent and the name of the file from which it was sent 
+> 		$calling_file = array( "sequence" => $functions_count, "action" => $backtrace[1]["function"], "event" => $backtrace[1]["args"][0], "function" => $backtrace[1]["args"][1], "priority" => $calling_priority_set, "args" => $calling_args_set, "file" => $backtrace[1]["file"], "line" => $backtrace[1]["line"] , "time" => $time_fired );
+> 		
+> 		if( $sending_func == 'add_filter' ) {
+> 			$wp_hook_sniff_functions_added_array[] = $calling_file;
+> 		} elseif ( $sending_func == 'remove_filter' ) {
+> 			$wp_hook_sniff_functions_removed_array[] = $calling_file;
+> 		} else {
+> 			// an error of some sort occurred; do nothing
+> 		}
+> 				
+> 	} else {
+> 		// This relates to a filter function; process the contents of the first array element
+> 
+> 		if( !empty( $backtrace[0]["args"][2] ) ) {
+> 			$calling_priority_set = $backtrace[0]["args"][2];
+> 		} else {
+> 			$calling_priority_set = "";
+> 		}
+> 		
+> 		if( !empty( $backtrace[0]["args"][3] ) ) {
+> 			$calling_args_set = $backtrace[0]["args"][3];
+> 		} else {
+> 			$calling_args_set = "";
+> 		}
+> 		
+> 		// Capture the filter function sent and the name of the file from which it was sent
+> 		$calling_file = array( "sequence" => $functions_count, "action" => $backtrace[0]["function"], "event" => $backtrace[0]["args"][0], "function" => $backtrace[0]["args"][1], "priority" => $calling_priority_set, "args" => $calling_args_set, "file" => $backtrace[0]["file"], "line" => $backtrace[0]["line"] , "time" => $time_fired );
+> 		
+> 		if( $sending_func == 'add_filter' ) {
+> 			$wp_hook_sniff_functions_added_array[] = $calling_file;
+> 		} elseif ( $sending_func == 'remove_filter' ) {
+> 			$wp_hook_sniff_functions_removed_array[] = $calling_file;
+> 		} else {
+> 			// an error of some sort occurred; do nothing
+> 		}
+> 	}
+> }
+> 
+> 
+> /********************************************************************************
+>  * 						Begin Modified WordPress Plugin API
+>  *
+>  * The functions below are included in the standard WP Plugin API. However, 
+>  * several of them have been modified for use with the WP Hook Sniffer Plugin.
+>  * Modifications are clearly marked.
+>  *******************************************************************************/
+> 
+70a207,224
+> 	
+> 	// Below Section Added for WP Hook Sniffer
+> 	global $functions_added_count;
+> 	
+> 	$time_fired = microtime( true );
+> 	
+> 	$backtrace = debug_backtrace();
+> 	
+> 	if ( empty( $functions_added_count ) ) {
+> 		$functions_added_count++;
+> 	}
+> 
+> 	if ( function_exists( 'action_filter_backtrace' ) )
+> 		action_filter_backtrace( $time_fired, $backtrace, $functions_added_count, 'add_filter' );
+> 	
+> 	$functions_added_count++;
+> 	// Above Section Added for WP Hook Sniffer
+> 	
+136a291,293
+> 	// Added for WP Hook Sniffer
+> 	global $filter_incrementor, $wp_hook_sniff_filter_firing_sequence;
+> 
+147a305,308
+> 		
+> 		//Added for WP Hook Sniffer
+> 		$wp_hook_sniff_filter_firing_sequence[] = "<em>Filter event has no added filters; skipping to next filter array element</em>";
+> 		
+163c324,340
+< 		foreach( (array) current($wp_filter[$tag]) as $the_ )
+---
+> 		foreach( (array) current($wp_filter[$tag]) as $the_ ) {
+> 			
+> 			// Below Section Added for WP Hook Sniffer
+> 			if ( empty( $filter_incrementor ) ) {
+> 				$filter_incrementor++;
+> 			}
+> 			
+> 			if (gettype ($the_['function']) == 'object' && get_class ($the_['function']) == 'Closure') {
+> 				$fname = '[Closure]';
+> 			} else {
+> 				$fname = $the_['function'];
+> 			}
+> 
+> 			$wp_hook_sniff_filter_firing_sequence[] = "Firing Sequence $filter_incrementor: $tag --> " . $fname . " --> Time fired: " . microtime( true );
+> 			$filter_incrementor++;
+> 			// Above Section Added for WP Hook Sniffer
+> 			
+168a346,347
+> 		}
+> 
+194a374,376
+> 	
+> 	// Added for WP Hook Sniffer
+> 	global $filter_incrementor, $wp_hook_sniff_filter_firing_sequence;
+205a388,391
+> 		
+> 		//Added for WP Hook Sniffer
+> 		$wp_hook_sniff_filter_firing_sequence[] = "<em>Filter event has no added filters; skipping to next filter array element</em>";
+> 				
+218c404,420
+< 		foreach( (array) current($wp_filter[$tag]) as $the_ )
+---
+> 		foreach( (array) current($wp_filter[$tag]) as $the_ ) {
+> 			
+> 			// Below Section Added for WP Hook Sniffer
+> 			if ( empty( $filter_incrementor ) ) {
+> 				$filter_incrementor++;
+> 			}
+> 			
+> 			if (gettype ($the_['function']) == 'object' && get_class ($the_['function']) == 'Closure') {
+> 				$fname = '[Closure]';
+> 			} else {
+> 				$fname = $the_['function'];
+> 			}
+> 
+> 			$wp_hook_sniff_filter_firing_sequence[] = "Firing Sequence $filter_incrementor: $tag --> " . $fname . " --> Time fired: " . microtime( true );
+> 			$filter_incrementor++;
+> 			// Above Section Added for WP Hook Sniffer
+> 			
+220a423,424
+> 				
+> 		}
+254c458
+< 
+---
+> 	
+256a461,464
+> 		
+> 		// Added for WP Hook Sniffer
+> 		$time_fired = microtime( true );
+> 	
+260a469,487
+> 	
+> 	// Below Section Added for WP Hook Sniffer
+> 	global $functions_removed_count;
+> 
+> 	$backtrace = debug_backtrace();
+> 
+> 	if ( empty( $functions_removed_count ) ) {
+> 		$functions_removed_count++;
+> 	}
+> 	
+> 	if ( empty( $time_fired ) ) {
+> 		$time_fired = 0;
+> 	}
+> 
+> 	if ( function_exists( 'action_filter_backtrace' ) )
+> 		action_filter_backtrace( $time_fired, $backtrace, $functions_removed_count, 'remove_filter' );
+> 	
+> 	$functions_removed_count++;
+> 	// Above Section Added for WP Hook Sniffer
+354a582,584
+> 	// Added for WP Hook Sniffer
+> 	global $action_incrementor, $wp_hook_sniff_action_firing_sequence;
+> 
+372a603,606
+> 		
+> 		// Added for WP Hook Sniffer
+> 		$wp_hook_sniff_action_firing_sequence[] = "<em>Action event has no added actions; skipping to next action array element</em>";
+> 		
+393c627,643
+< 		foreach ( (array) current($wp_filter[$tag]) as $the_ )
+---
+> 		foreach ( (array) current($wp_filter[$tag]) as $the_ ) {
+> 			
+> 			// Below Section Added for WP Hook Sniffer
+> 			if ( empty( $action_incrementor ) ) {
+> 					$action_incrementor++;
+> 			}
+> 			
+> 			if (gettype ($the_['function']) == 'object' && get_class ($the_['function']) == 'Closure') {
+> 				$fname = '[Closure]';
+> 			} else {
+> 				$fname = $the_['function'];
+> 			}
+> 
+> 			$wp_hook_sniff_action_firing_sequence[] = "Firing Sequence $action_incrementor: $tag --> " . $fname . " --> Time fired: " . microtime( true );
+> 			$action_incrementor++;
+> 			// Above Section Added for WP Hook Sniffer
+> 			
+395a646,647
+> 		
+> 		}
+440a693,695
+> 	// Added for WP Hook Sniffer
+> 	global $action_incrementor, $wp_hook_sniff_action_firing_sequence;
+> 
+458a714,717
+> 		
+> 		// Added for WP Hook Sniffer
+> 		$wp_hook_sniff_action_firing_sequence[] = "<em>Action event has no added actions; skipping to next action array element</em>";
+> 	
+471c730,746
+< 		foreach( (array) current($wp_filter[$tag]) as $the_ )
+---
+> 		foreach( (array) current($wp_filter[$tag]) as $the_ ) {
+> 			
+> 			// Below Section Added for WP Hook Sniffer
+> 			if ( empty( $action_incrementor ) ) {
+> 					$action_incrementor++;
+> 			}
+> 			
+> 			if (gettype ($the_['function']) == 'object' && get_class ($the_['function']) == 'Closure') {
+> 				$fname = '[Closure]';
+> 			} else {
+> 				$fname = $the_['function'];
+> 			}
+> 
+> 			$wp_hook_sniff_action_firing_sequence[] = "Firing Sequence $action_incrementor: $tag --> " . $fname . " --> Time fired: " . microtime( true );
+> 			$action_incrementor++;
+> 			// Above Section Added for WP Hook Sniffer
+> 			
+473a749,750
+> 				
+> 		}
+771c1048
+< ?>
+---
+> ?>
+\ No newline at end of file
