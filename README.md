@@ -44,6 +44,7 @@ Simply search for ‘WordPress Advanced Hook Sniffer’ in the Plugins Admin pag
 ## Credits
 
 Developed by [Mirco Babini](http://www.mircobabini.com/donate) (Web Developer & Mobile App Developer), CEO @ [SED Web](http://www.sedweb.it)
+
 Originally from [@jeffsayre](http://twitter.com/jeffsayre)
 
 ##### License: [GPLv3](http://www.gnu.org/licenses/gpl.html)
