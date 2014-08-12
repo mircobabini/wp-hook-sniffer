@@ -35,11 +35,11 @@ A sequential listing of apply_filters events with their corresponding fired filt
 This plugin is to be used only in a development sandbox and not in a production environment.
 
 ## Contribute
-If you wanna contribute, pull requests on [github.com](https://github.com/mircobabini/wpml-shortcodes/pulls).
+If you wanna contribute, pull requests on [github.com](https://github.com/mircobabini/wp-hook-sniffer/pulls).
 
 ## Installation
 
-Simply search for ‘WPML Shortcodes’ in the Plugins Admin page, then install and activate it. That's it!
+Simply search for ‘WordPress Advanced Hook Sniffer’ in the Plugins Admin page, then install and activate it. That's it!
 
 ## Credits
 
