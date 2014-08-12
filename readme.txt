@@ -1,10 +1,10 @@
-=== Plugin Name ===
+=== WordPress Advanced Hook Sniffer ===
 Contributors: mirkolofio <mirkolofio@gmail.com>, jeffsayre
 Donate link: http://www.mircobabini.com/wordpress/hook-sniffer-wordpress-plugin/
 Tags: wordpress, wordpress mu, buddypress, developer plugin, action hooks, filter hooks
 Requires at least: WP 3.0
 Tested up to: WP 3.7.1
-Stable tag: 0.17
+Stable tag: 0.18
 
 The WordPress Hook Sniffer plugin is a tool for plugin developers that helps determine the sequence in which action and filter functions are fired.
 

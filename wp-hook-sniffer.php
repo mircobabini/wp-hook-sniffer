@@ -1,16 +1,16 @@
 <?php
 /*
-Plugin Name: Hook Sniffer
+Plugin Name: WordPress Advanced Hook Sniffer
 Plugin URI: http://www.mircobabini.com/wordpress/hook-sniffer-wordpress-plugin/
 Description: This is a developer's tool that sniffs out the firing sequence of WordPress action and filter hooks. DO NOT USE in a production environment.
-Version: 0.17
+Version: 0.18
 Requires at least: WP 3.0
-Tested up to: WP 3.7.1
+Tested up to: WP 3.9.2
 License: GNU General Public License 3.0 (GPL) http://www.gnu.org/licenses/gpl.html
 Author: Jeff Sayre, Mirco Babini <mirkolofio@gmail.com>
 Author URI: http://jeffsayre.com/, http://mircobabini.com/
 
-Copyright 2010 Jeff Sayre, Mirco Babini
+Copyright 2010 Jeff Sayre, 2013-2014 Mirco Babini
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -47,7 +47,7 @@ function wp_hook_sniff_init() {
 	}
 	
 	/* Define the component's current version */
-	define( 'WP_HOOK_PLUGIN_VERSION', 0.17 );
+	define( 'WP_HOOK_PLUGIN_VERSION', 0.18 );
 	
 	/* Define the current version of the modified plugin.php file */
 	define( 'WP_HOOK_SNIFF_PLUGIN_API_VER_CURRENT', 1.2 );
